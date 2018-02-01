@@ -2,9 +2,11 @@
 layout: post
 title:  "LeetCode:排列组合类型问题总结"
 date:   2015-08-10 13:30:54
+excerpt: ""
 tag:
 - 算法
 - leetcode
+comments: false
 ---
 
 * content
