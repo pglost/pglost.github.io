@@ -18,7 +18,7 @@ publish/subscribe模式其实就是观察者模式，这种模式提供了一种
 ## publish/subscribe模式中的事件管理内核
 
 ### 代码
-
+{% highlight java %}
 	//事件管理对象的构造函数
 	function EventManger(){
 	    this.handlers = {};
@@ -60,7 +60,7 @@ publish/subscribe模式其实就是观察者模式，这种模式提供了一种
 	        }
 	    }
 	};
-
+{% endhighlight%}
 ## publish/subscribe模式的应用
 
 下面举一个简单的图书馆书目管理的例子，来说明publish/subscribe模式的作用
@@ -71,7 +71,7 @@ publish/subscribe模式其实就是观察者模式，这种模式提供了一种
 
 ### 代码
 
-
+{% highlight java%}
 	//创建事件管理器
 	var eventManger = new EventManger();
 	//Book类型对象构造函数
@@ -139,9 +139,9 @@ publish/subscribe模式其实就是观察者模式，这种模式提供了一种
 		bookCol.removeBook(book2);
 
 		bookCol.removeBook(book1);
-
+{% endhighlight%}
 ### 结果
 
-![结果](/public/images/post-content/publisher-subscriber-pattern/result.png)
+![结果]({{site.blog-img}}/publisher-subscriber-pattern/result.png)
 
 

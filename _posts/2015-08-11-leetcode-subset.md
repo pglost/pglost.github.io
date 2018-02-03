@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "LeetCode:排列组合类型问题总结"
-date:   2015-08-10 13:30:54
-excerpt:
+date:   2015-08-11 13:30:54
+excerpt: Subsets
 tag:
 - 算法
 - leetcode
@@ -29,7 +29,7 @@ Given a set of distinct integers, nums, return all possible subsets.
 这是这一类问题中的基础问题，其他排列组合的问题都可以套用本题的解题思路来解决。
 
 ### 代码
-
+{% highlight java %}
 	class Solution {
 	public:
 	    vector<vector<int>> subsets(vector<int>& nums) {
@@ -50,6 +50,7 @@ Given a set of distinct integers, nums, return all possible subsets.
 	    }
 
 	};
+{% endhighlight %}
 
 ### 代码要点
 1. 因为题目中要求子集中的元素为非降序排列，因此要首先对题目给出的集合进行排序。
@@ -69,7 +70,7 @@ Given a collection of integers that might contain duplicates, nums, return all p
 这个问题与[Subsets](https://leetcode.com/problems/subsets/)类似，只要把重复的的子集排除就可以。例如：{1, 2(1), 2(2), 2(3)},规定{1, 2(1)}和{1, 2(2)}重复,{1, 2(1), 2(2)}和{1, 2(2), 2(3)}重复。从而得出规律：:我们只关心取多少个2,不关心取哪几个。因此，规定必须从第一个2开始连续取(作为重复集合中的代表),如必须是{1, 2(1)}不能是{1, 2{2})。
 
 ### 代码
-
+{% highlight java %}
 	class Solution {
 	public:
 	    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
@@ -93,7 +94,7 @@ Given a collection of integers that might contain duplicates, nums, return all p
 
 	    }
 	};
-
+{% endhighlight %}
 ### 代码要点
 1. 还是首先要对集合排序，首先是因为题目要求输出的子集为非升序的，其次排序之后很容易的就把重复的子集排除。
 2. subsetsWithDupHelper(nums, i, sub, subs)的含义是，从nums的第i个元素开始，计算包含sub的所有不重复子集，并把结果存储到subs中。
@@ -110,7 +111,7 @@ Given a collection of numbers, return all possible permutations.
 与subsets的思路类似，可以再subsets模板的基础上加以修改。
 
 ### 代码
-
+{% highlight java %}
 	class Solution {
 	public:
 	    vector<vector<int>> permute(vector<int>& nums) {
@@ -135,7 +136,7 @@ Given a collection of numbers, return all possible permutations.
 	        }
 	    }
 	};
-
+{% endhighlight %}
 ### 代码要点
 在subsets的基础上，做两点修改
 
@@ -155,7 +156,7 @@ Given a collection of numbers that might contain duplicates, return all possible
 在Permutations的基础上，把重复的组合排除，并且对已经在前一层参与递归nums的元素做排除，由于nums中有重复的元素，因此不能使用Permutations中方法，可以使用一个bool数组标识nums元素的递归状态。
 
 ### 代码
-
+{% highlight java %}
 	class Solution {
 	public:
 	    vector<vector<int>> permuteUnique(vector<int>& nums) {
@@ -184,7 +185,7 @@ Given a collection of numbers that might contain duplicates, return all possible
 	        }
 	    }
 	};
-
+{% endhighlight %}
 ### 代码要点
 
 1. 排除上层已经递归的元素
@@ -207,7 +208,7 @@ C中的数字可以无限制重复被选取。
 subsets II的变形，需要考虑给出的候选集合存在重复元素的情况。递归返回的条件以及需要跳过的情况与subsets II略有不同
 
 ### 代码
-
+{% highlight java %}
 	class Solution {
 	public:
 	    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
@@ -236,7 +237,7 @@ subsets II的变形，需要考虑给出的候选集合存在重复元素的情�
 	        }
 	    }
 	};
-
+{% endhighlight %}
 ### 代码要点
 1. combinationSumHelper(candidates, target, i,list, result)的含义：从candidates的第i个元素开始，选择包含list的并且满足子集的和为target的所有非重复子集，并且把找到的集合存到result中。
 2. 递归返回的条件为target为0。
@@ -254,7 +255,7 @@ A mapping of digit to letters (just like on the telephone buttons) is given belo
 第一层递归，digits中第一个数字对应的字符集；第二层递归，包含第一层选中的字符，对digits的第二个数字做第二层递归。
 
 ### 代码
-
+{% highlight java %}
 	class Solution {
 	public:
 	    vector<string> letterCombinations(string digits) {
@@ -279,7 +280,7 @@ A mapping of digit to letters (just like on the telephone buttons) is given belo
 	        }
 	    }
 	};
-
+{% endhighlight %}
 ###代码要点
 
 1. C++中vector的初始化不能用[]的形式
@@ -301,7 +302,7 @@ Return all possible palindrome partitioning of s.
 第一层递归为s的以首字母开头的所有连续子串，第二层递归为上一层递归后一个字符开的所有连续子串。如果子串不为回文，则停止子递归。递归返回的条件为走到s的最后一个字符。
 
 ### 代码
-
+{% highlight java %}
 	class Solution {
 	public:
 	    vector<vector<string>> partition(string s) {
@@ -339,7 +340,7 @@ Return all possible palindrome partitioning of s.
 	        }
 	    }
 	};
-
+{% endhighlight %}
 ### 代码要点
 1.回文字符串的判断
 
@@ -354,7 +355,7 @@ Given a string containing only digits, restore it by returning all possible vali
 基本同上一题类似，递归返回条件为分割了四个子串，如果递归到了s的末尾，就把当前分割存储到result中。
 
 ### 代码
-
+{% highlight java %}
 	class Solution {
 	public:
 	    vector<string> restoreIpAddresses(string s) {
@@ -396,7 +397,7 @@ Given a string containing only digits, restore it by returning all possible vali
 	    }
 
 	};
-
+{% endhighlight %}
 ### 代码要点：
 
 1.字符串的操作
