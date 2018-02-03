@@ -2,6 +2,7 @@
 layout: post
 title:  "基于Jekyll博客应用前端样式总结"
 date:   2015-09-08 13:30:54
+excerpt:
 tag:
 - 前端
 - html

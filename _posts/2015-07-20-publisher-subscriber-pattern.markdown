@@ -2,6 +2,7 @@
 layout:  post
 title:  "发布/订阅者模式"
 date:   2015-07-20 14:30:54
+excerpt:
 tag:
 - 设计模式
 ---
