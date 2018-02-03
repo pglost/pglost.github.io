@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "博客重构总结"
+title:  "基于Jekyll博客应用前端样式总结"
 date:   2015-09-08 13:30:54
 tag:
 - 前端
@@ -13,7 +13,7 @@ tag:
 
 ## 概述
 
-最近花了大概一周的时间，写了一个[博客](http://fullstacks.info/blog-demo/)的demo，使用github托管。除了使用jekyll，没有用到其它任何前端框架，也算是锻炼了裸写html和css的能力。本文对搭建博客中使用的技术要点加以总结，并且后期计划依照demo重构本博客。
+最近花了大概一周的时间，写了一个[博客](http://pglost.github.io/blog-theme/)的demo，使用github托管。除了使用jekyll，没有用到其它任何前端框架，也算是锻炼了裸写html和css的能力。本文对搭建博客中使用的技术要点加以总结。
 
 ## 清除浮动
 
@@ -22,7 +22,7 @@ tag:
 clearfix 是一种 CSS 技巧，可以在不添加新的 html 标签的前提下，解决让父元素包含浮动的子元素的问题以及外边距重叠问题。[Micro Clearfix](http://nicolasgallagher.com/micro-clearfix-hack/)给出了一个完整的解决方案,并且兼容IE6/7。这里不考虑IE6/7的兼容性问题，只讨论clearfix的核心内容。
 
 ### 代码
-
+{% highlight css %}
 	.clearfix:before,
 	.clearfix:after
 	{
@@ -32,6 +32,7 @@ clearfix 是一种 CSS 技巧，可以在不添加新的 html 标签的前提下
 	.clearfix:after {
 		clear: both;
 	}
+{% endhighlight %}
 
 ### 子元素浮动问题
 
@@ -43,12 +44,14 @@ clearfix 是一种 CSS 技巧，可以在不添加新的 html 标签的前提下
 
 代码：
 
+{% highlight css %}
 	.clearfix:after
 	{
 	 	content: "   ";
 	 	display: table;
 	 	clear: both;
 	}
+{% endhighlight %}
 
 QA：
 为什么这里display设置为table，设置也block可不可以？
@@ -63,18 +66,20 @@ QA：
 解决方案类似于子元素浮动问题，即在子元素的头尾分别插入两个伪元素即可。
 
 代码：
-
+{% hightlight css %}
 	.clearfix:before,
 	.clearfix:after
 	{
 	 	content: "   ";
 	 	display: table;
 	}
+{% endhightlight %}
 
 ###总结
 
 综合以上两种使用场景，合并后的代码为：
 
+{% hightlight css %}
 	.clearfix:before,
 	.clearfix:after
 	{
@@ -84,28 +89,36 @@ QA：
 	.clearfix:after {
 		clear: both;
 	}
+{% endhighlight %}
 
 如果想兼容IE6/7，可以继续添加如下代码：
 
+{% highlight css %}
 	.clearfix {
 	    *zoom: 1;
 	}
-
+{% endhighlight %}
 
 ## 如何设置大背景图
 
 ### 为元素添加背景图
 
+{% highlight css %}
 	background-url = url("your path");
+{% endhighlight %}
 
 ### 设置背景图完全覆盖背景区域
+
+{% highlight css %}
 	background-size : cover;
+{% endhighlight %}
 
 ### 设置背景图的起始位置
 
 当背景区域缩小到比背景图还要小时，可以选择让背景图的哪部分显示出。
-
+{% highlight css %}
 	background-positon: 50% 50%;
+{% endhighlight %}
 
 ##CSS优先级计算
 
@@ -119,23 +132,25 @@ CSS的优先级在英文中所对应的单词为[Specificity](https://developer.
 
 [CSS过渡](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Using_CSS_transitions)(transition)，是 CSS3 规范的一部分，用来控制 CSS 属性的变化速率。可以让属性的变化过程持续一段时间，而不是立即生效。
 
-[blog-demo](http://fullstacks.info/blog-demo)中的博客列表中的图片链接就实现了一个鼠标悬停的过渡的效果。
+[blog-demo](http://pglost.github.io/blog-theme)中的博客列表中的图片链接就实现了一个鼠标悬停的过渡的效果。
 
 HTML结构如下
-
+{% highlight html %}
+{% raw %}
 	<div class="post">
 	  <a class="thumbnail">
 	    <img>
 	  </a>
 	</div>
+{% endraw %}
+{% endhighlight %}
 
 CSS样式如下
-
+{% highlight css %}
 	.thumbnail {
 	  display: block;
 	  position: relative;
 	}
-
 	.thumbnail:before {
 	  display: block;
 	  content: " ";
@@ -150,18 +165,21 @@ CSS样式如下
 	  opacity: 0;
 	  transition: opacity 1s;
 	}
-
 	.thumbnail:hover:before {
 	   opacity: 0.6;
 	}
+{% endhighlight %}
 
 主要的实现思路是在图片前添加一个脱离文档流的伪元素覆盖在图片上，鼠标悬停时改变伪元素背景的透明度，并且为这种样式的改变添加了过渡效果。
 
 简写语法：
-
+{% highlight css %}
+{% raw %}
 	div {
 	    transition: <property> <duration> <timing function> <delay>;
 	}
+{% endraw %}
+{% endhighlight %}
 
 ## 为header添加透明样式
 
@@ -175,12 +193,14 @@ CSS样式如下
 
 header元素的CSS如下：
 
+{% highlight css %}
 	.header {
 	  height: 50px;
 	  background: rgba(0,0,0,.3);
 	  position: relative;
 	  z-index: 1;
 	}
+{% endhighlight %}
 
 ## 为footer添加font-awesome图标
 
@@ -195,39 +215,45 @@ header元素的CSS如下：
 2. 进入下载的文件夹，根据个人需要选择使用css/less/scss,将fonts文件夹和你选用的css/less/scss文件夹拷贝到项目的目录下
 
 3. 将font-awesome样式文件链接到hmtl文件，根据如下语法选用不同的图标。可以到官网的[Icons](http://fortawesome.github.io/Font-Awesome/icons/)页面寻找你需要的图标名替换icon-name
-
+{% highlight html %}
+{% raw %}
 	<i class="fa fa-icon-name"></i>
+{% endraw %}
+{% endhighlight %}
 
 4. 为图标设置样式，主要是设置字体颜色，背景，居中等
 
 我的footer代码
 
 HTML:
-
-	<div class="footer">
-	  <div class="container clearfix">
-	    <ul class="icon-wrapper">
-	      <li class="icon github">
-	        <a href="http://github.com/happyrain">
-	          <i class="fa fa-github-alt"></i>
-	        </a>
-	      </li>
-	      <li class="icon email">
-	        <a href="mailto:xiyuvip@gmail.com">
-	          <i class="fa fa-envelope-o"></i>
-	        </a>
-	      </li>
-	      <li class="icon weibo">
-	        <a href="http://weibo.com/vipxiyu">
-	          <i class="fa fa-weibo"></i>
-	        </a>
-	      </li>
-	    </ul>
-	  </div>
-	</div>
+<% highlight html %>
+	<% raw %>
+		<div class="footer">
+		  <div class="container clearfix">
+		    <ul class="icon-wrapper">
+		      <li class="icon github">
+		        <a href="http://github.com/happyrain">
+		          <i class="fa fa-github-alt"></i>
+		        </a>
+		      </li>
+		      <li class="icon email">
+		        <a href="mailto:xiyuvip@gmail.com">
+		          <i class="fa fa-envelope-o"></i>
+		        </a>
+		      </li>
+		      <li class="icon weibo">
+		        <a href="http://weibo.com/vipxiyu">
+		          <i class="fa fa-weibo"></i>
+		        </a>
+		      </li>
+		    </ul>
+		  </div>
+		</div>
+	<% endraw %>
+<% endhighlight %>
 
 CSS:
-
+<% highlight css %>
 	.footer {
 	  height: 200px;
 	  background: #292d35;
@@ -257,16 +283,19 @@ CSS:
 	.footer .icon a {
 	  color: #fff;
 	}
-
+<% endhighlight %>
 ##为博客添加favicon
 
 在head中添加如下代码即可实现：
-
-	<link rel="short icon" type="image/x-icon"href="images/favicon.ico">
+<% highlight html %>
+	<% raw %>
+		<link rel="short icon" type="image/x-icon"href="images/favicon.ico">
+<% endraw %>
+<% endhighlight %>
 
 效果：
 
-![favicon](/public/images/post-content/2/favicon.png)
+![favicon]({{ site.url }}/{{ site.blog-img }}/blog-demo-summary/favicon.png)
 
 title前面多了个可爱的小图标^-^
 
@@ -278,34 +307,30 @@ blog-demo中涉及到的响应式设计主要集中在两方面：
 2. 使用相对长度单位
 
 当然，在head中设置viewport也是必不可少的：
-
+<% highlight html %>
+	<% raw %>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<% endraw %>
+<% endhighlight %>
 pc上的显示效果：
 
-![responsive-pc](/public/images/post-content/2/responsive-pc.png)
+![responsive-pc]({{ site.url }}/{{ site.blog-img }}/blog-demo-summary/responsive-pc.png)
 
 ipad上的显示效果：
 
-![responsive-ipad](/public/images/post-content/2/responsive-ipad.png)
+![responsive-ipad]({{ site.url }}/{{ site.blog-img }}/blog-demo-summary//responsive-ipad.png)
 
 iphone6plus上的显示效果：
 
-![responsive-ip6plus](/public/images/post-content/2/responsive-ip6plus.png)
+![responsive-ip6plus]({{ site.url }}/{{ site.blog-img }}/blog-demo-summary/responsive-ip6plus.png)
 
 iphone6上的显示效果：
 
-![responsive-ip6](/public/images/post-content/2/responsive-ip6.png)
+![responsive-ip6]({{ site.url }}/{{ site.blog-img }}/blog-demo-summary/responsive-ip6.png)
 
 iphone5上的显示效果：
 
-![responsive-ip5](/public/images/post-content/2/responsive-ip5.png)
-
-##下一步的计划
-
-1. 把blog-demo迁移到本博客上。
-
-2. 使用glup+react+webpack重新构建一个新的demo
+![responsive-ip5]({{ site.url }}/{{ site.blog-img }}/blog-demo-summary/responsive-ip5.png)
 
 
 
