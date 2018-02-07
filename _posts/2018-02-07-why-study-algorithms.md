@@ -33,12 +33,13 @@ tag:
 
 ## 智慧的碰撞 ##
 > “ For me, great algorithms are the poetry of computation. Just like verse, they can be terse, allusive, dense, and even mysterious. But once unlocked, they cast a brilliant new light on someaspect of computing. ” — Francis Sullivan
+
 >  “ An algorithm must be seen to be believed. ” — Donald Knuth
 
 ## 正在取代数学模型 ##
 - 20世纪的科学研究-基于公式
 
-\[ E = mc^{2} \]
+\\[ E = mc^{2} \\]
 
 
 - 21世纪的科学研究-基于算法
