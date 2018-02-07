@@ -4,7 +4,6 @@ title:  "LeetCode:排列组合类型问题总结"
 date:   2015-08-11 13:30:54
 excerpt: Subsets
 tag:
-- 算法
 - leetcode
 ---
 

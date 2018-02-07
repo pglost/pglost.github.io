@@ -4,7 +4,6 @@ title:  "LeetCode: Implement strStr()"
 date:   2015-08-10 13:30:54
 excerpt:
 tag:
-- 算法
 - leetcode
 ---
 
