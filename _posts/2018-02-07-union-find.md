@@ -10,7 +10,7 @@ tag:
 * content
 {:toc}
 
-## 产出可用算法的步骤 ##
+## 1. 产出可用算法的步骤 ##
 
 - 问题建模
 - 找到一个能解决问题的算法
@@ -19,17 +19,17 @@ tag:
 - 找到解决算法速度、内存问题的方法
 - 迭代直到满足需求
 
-## 动态连通性问题 ##
+## 2. 动态连通性问题 ##
 
 
-### 概述 ###
+### 2.1 概述 ###
 
 在N个对象的集合中
 
 - Union操作：连接两个对象
 - Find操作（connect query）：两个对象之间是否联通
 
-### 对象建模 ###
+### 2.2 对象建模 ###
 
 在实际应用中，动态连通性问题中的对象可能是多种多样的
 
@@ -41,7 +41,7 @@ tag:
 
 在程序设计中，所有对象对抽象成数字0到N-1
 
-### 连通性性建模 ###
+### 2.3 连通性性建模 ###
 
 连接具有以下性质：
 
@@ -51,21 +51,22 @@ tag:
 
 连通集：相互连接对象的最大集合
 
-### 实现 ###
+### 2.4 实现 ###
 - 查询（Find）操作：检查两个对象是否在同一连通集内
 
 - 合并（Union）操作：将两个对象所在的连通集合并
-### Union-Find数据结构 ###
-| public class UF | 
-| --------   | 
-| UF(int N)     |   
-| void union(int p, int q)|
-| void connected(int p, int q)|
-| int find(int p) |
-| int count()|
 
-## 快速查找算法（Quick Find） ##
-### 数据结构 ###
+### 2.5 Union-Find数据结构 ###
+~~~ java
+ public class UF 
+ UF(int N)   
+ void union(int p, int q)
+ void connected(int p, int q)
+ int find(int p)
+ int count()
+~~~
+## 3. 快速查找算法（Quick Find） ##
+### 3.1 数据结构 ###
 
 用长度为N的数组id[]来表示N个对象的集合。**数组索引代表对象，数组值代表连通子集的标识**。
 
@@ -74,7 +75,7 @@ tag:
 - Find：检查p与q的id是否相同
 - Union：合并包含p、q的连通集，即把数组中所有等于id[p]的项的值重置为id[q]
 
-### Java实现 ###
+### 3.2 Java实现 ###
 
 ~~~ java
 public class QuickFindUF {
@@ -121,16 +122,18 @@ public class QuickFindUF {
 }
 ~~~
 
-### 算法分析 ###
+### 3.3 算法分析 ###
+
 数组访问次数
 
-| 算法 | 初始化 | Find | Union|  
-| :----:  | :----:   | :----:   | :----:   | 
-| quick-find |   N | 1 | N|
+| 算法 | 初始化 | Find | Union |
+| :----:  | :----: | :----: | :----: |
+| quick-find | N | 1 | N|
 
 对于有N个对象的并查集，执行N次union操作需要$$N^2$$次数组访问操作，效率太低。
-## 快速合并（QuickUnion）算法
-### 数据结构 ##
+
+## 4. 快速合并（QuickUnion）算法
+### 4.1 数据结构 ##
 用长度为N的数组id[]来表示N个对象的集合。**数组索引代表对象，数组元素代表其父对象。**
 
 i的父亲是id[i]。i的根是id[id[...id[i]...]]。
@@ -138,10 +141,10 @@ i的父亲是id[i]。i的根是id[id[...id[i]...]]。
 - Find操作：检查p、q是否有相同的根
 - Union操作：合并p、q的连通子集，将p的根设置为q的根
  
-### Java实现 ###
+### 4.2 Java实现 ###
 ~~~ java
-	public class QuickUnionUF {
-   private int[] parent;  // parent[i] = parent of i
+public class QuickUnionUF {
+    private int[] parent;  // parent[i] = parent of i
     private int count;     // number of components
 
     public QuickUnionUF(int n) {
@@ -184,9 +187,10 @@ i的父亲是id[i]。i的根是id[id[...id[i]...]]。
     }
 ~~~
 
-### 算法分析 ###
+### 4.3 算法分析 ###
+
 | 算法 | 初始化 | Find | Union|  
-| :----:  | :----:   | :----:   | :----:   | 
+| :----:  | :----:   | :----:   | :----:  | 
 | quick-find |   N | 1 | N|
 | quick-union（最坏情况） |   N | N | N|
 
@@ -200,19 +204,19 @@ quick-union的缺陷
 - 连通子集组成的数结构的高度可能过大，这样就导致寻找root的数组访问开销最高可能为N
 - find和union的操作都需要寻找root，开销最大可能为N
 
-## 算法改进 ##
-### 加权快速合并（Weighted Quick Union） ###
-#### 基本思路 ####
+## 5. 算法改进 ##
+### 5.1 加权快速合并（Weighted Quick Union） ###
+#### 5.1.1 基本思路 ####
 
 - 改进quick-union算法，从而避免连通子集的树结构过高
 - 追踪每个树的节点数量
 - 做union操作时，将节点少的树连接到节点多的树上
 
-#### 数据结构 ####
+#### 5.1.2 数据结构 ####
 
 数据结构与Quick Union算法基本一致，增加了一个数组sz[]去追踪以每个对象i为root的树的节点个数。
 
-#### Java实现 ####
+#### 5.1.3 Java实现 ####
 find操作：
 
 - 与Quick Union完全一样
@@ -237,17 +241,21 @@ union操作：
 		sz[i] += sz[j];
 	}
 ~~~
-#### 算法分析 ####
+#### 5.1.4 算法分析 ####
 时间复杂度：
 
 - Find：与p、q所在树的深度成正比
 - Union：找到root之后，花费常数时间
 
-> **命题**：在weightedUF算法中，任意一个节点x的深度最多是lgN
+> **命题**：
+> 
+> 在weightedUF算法中，任意一个节点x的深度最多是lgN
+> 
 > **证明**：
-> 当包含x的树$T_{1}$x合并到另一个树$T_{2}$时，x的深度才会加1；
-> 因为$ \vert T_{1} \vert < \vert $T_{2}$ \vert，包含x的新树节点数量相比于以前至少会翻倍；
-> 最坏的情况，节点x的深度一直在增加，最多增加lgN次
+> 
+> - 当包含x的树$$T_{1}$$合并到另一个树$$T_{2}$$时，x的深度才会加1；
+> - 由于$$\vert T_{1} \vert$$ < $$\vert T_{2}\vert$$，包含x的新树节点数量相比于以前至少会翻倍；
+> - 最坏的情况，节点x的深度一直在增加，最多增加lgN次
 
 | 算法 | 初始化 | Find | Union|  
 | :----:  | :----:   | :----:   | :----:   | 
@@ -255,11 +263,11 @@ union操作：
 | quick-union（最坏情况） |   N | N | N|
 | weighted QU |  N | lgN | lgN|
 
-### 路径压缩（略） ###
+### 5.2 路径压缩（略） ###
 
 进一步让树更平，找到节点p的根节点root之后，将寻找过程中访问过得节点的parent设置为root。
 
-### 总结 ###
+### 5.3 总结 ###
 从一个空的数据结构开始，对N个对象的集合做M次union-find的系列操作。
 
 | 算法 | 最坏时间复杂度|  
