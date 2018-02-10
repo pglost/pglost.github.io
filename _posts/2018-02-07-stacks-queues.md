@@ -63,6 +63,7 @@ public class linkedStackOfStrings {
 - 时间：在最坏情况下，每个操作常数时间
 - 空间：N个元素~40N byte
 
+
 | Node | 空间花费 |
 | :----:  | :----: |
 | object overhead | 16 byte| 
