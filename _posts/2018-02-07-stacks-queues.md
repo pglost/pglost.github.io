@@ -70,6 +70,7 @@ public class linkedStackOfStrings {
 | extra overhead | 8 byte（inner class）| 
 | item | 8 byte（reference to String）| 
 | next | 8 byte（reference to Node）| 
+
 ### 2.3 数组实现 ###
 使用数组去存储栈中的元素。
 
@@ -116,7 +117,7 @@ public class linkedStackOfStrings {
 
 改变数组长度的开销很大，因为需要重新开辟一片内存，并将原数组的内容拷贝过去。
 
-如果每次入栈都改变数组的长度的话，N个元素入栈需要花费的时间~1+2+...+N=$$N^2$$$;
+如果每次入栈都改变数组的长度的话，N个元素入栈需要花费的时间~1+2+...+N=$$N^2$$;
 
 遵循的原则：resizing操作尽可能少
 
