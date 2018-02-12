@@ -178,6 +178,191 @@ public class linkedStackOfStrings {
 | size |  1 | 1 | 1|
 
 
+## 2.3 队列（Queues）##
+### 2.3.1 API ###
+~~~ java
+public class QueueOfStrings	StackOfStrings()	void enqueue(String item)	String dequeue()	boolean isEmpty()	int size()
+~~~
+
+### 2.3.2 链表实现 ###
+
+维护两个指针，分别指向链表头和链表尾，链表头出队，链表尾入队
+
+~~~ java
+	public class LinkedQueueOfStrings {
+		private Node first, last;
+		private class Node {
+			String item;
+			Node next;
+		}
+		public boolean isEmpty(){
+			return first == null;
+		}
+		public void enqueue(String item) {
+			Node oldLast = last;
+			last = new Node();
+			last.item = item;
+			last.next = null;
+			if (isEmpty()) first = last;
+			else 			  oldLast.next = last;
+		}
+		public String dequeue() {
+			String item = first.item;
+			first = first.next;
+			if(isEmpty) last = null;
+			return item;
+		}
+	}
+~~~
+## 2.4 泛型（Generics）##
+
+我们已经实现了字符串栈，对于其他的数据类型，我们如何扩展
+
+### 2.4.1 尝试1 ###
+对于每一种数据类型都实现一种栈，代码会越来越难以维护。
+
+### 2.4.2 尝试2 ###
+实现一个通用的对象栈，但是使用这种数据结构需要强制类型转换。
+### 2.4.2 尝试3 泛型 ###
+
+- 客户端不用强制转换
+- 编译的时候就能发现类型不匹配的错误
+
+链表实现
+
+~~~ java
+	public class Stack<Item> {
+		private Node first = null;
+		
+		private Node {
+			Item item;
+			Node next;
+		}
+		
+		public boolean isEmpty() {
+			return first == null;
+		}
+		public void push(Item item) {
+			Node oldFirst = first;
+			first = new Node();
+			first.item = item;
+			first.next = oldFirst;
+		}
+		public Item pop() {
+			Item item = first.item;
+			first = first.next;
+			return item;
+		}
+	}
+~~~
+
+数组实现
+
+Java无法new泛型数组，因此要用到强制类型转换。
 
 
 
+~~~ java
+	public class FixedCapacityStack<Item> {
+		private Item[] s;
+		private int N = 0;
+		
+		public FixedCapacityStack(int capacity) {
+			s = (Item[])new Object[capacity];
+		}
+		public boolean isEmpty() {
+			return N == 0;
+		}
+		public void push (Item item) {
+			s[N++] = item;
+		}
+		
+		public Item pop() {
+			return s[--N];
+		}
+	}
+~~~
+
+## 2.5 迭代器（Iterators）##
+
+### 2.5.1 迭代 ###
+不管栈的具体实现形式，提供栈内元素的遍历的通用方法。
+Java提供了`java.lang.Iterable`接口。
+
+### 2.5.2 迭代器 ###
+
+- Iterable接口：有返回迭代器的方法
+~~~ java
+	public interface Iterable<Item> {
+		Iterator<Item> iterator();
+	}
+~~~
+
+- Iterator接口: 有hasNext()和next()方法
+~~~ java
+	public interface Iterator<Item> {
+		boolean hasNext();
+		Item next();
+	}
+~~~
+- 为何让数据结构可迭代(Iterable):可以使用forEach语法，让代码更简洁
+
+~~~ java
+	for(String s:stack)
+		StdOut.println(s);
+~~~ 
+
+### 2.5.3 栈迭代器 ###
+
+#### 2.5.3 链表实现####
+~~~ java
+	import java.util.Iterator;
+	
+	public class Stack<Item> implements Iterable<Item> {
+		...
+		public Iterator<Item> iterator(){return new ListIterator();}
+		
+		private class ListIterator implements Iterator<Item> {
+			private Node current = first;
+			
+			public boolean hasNext() { return current != null;}
+			public Item next() {
+				Item item = current.item;
+				current = current.next;
+				return item;
+			};
+		}
+	}
+~~~
+#### 2.5.4 数组实现 ####
+~~~ java
+	import java.util.Iterator;
+	public class Stack<Item> implements Iterable<Item> {
+	...
+	public Iterator<Item> iterator() {
+		return new ReverseArrayIterator();
+	}
+	private class ReverseArrayIterator implements Iterator<Item> {
+		private int i = N;
+		
+		public boolean hasNext(){return i > 0;}
+		
+		public Item next { return s[--i]; }
+	}
+	
+}
+~~~
+
+## 2.6 背包（Bag）API##
+
+添加元素到集合中，并且可以遍历所有的元素。
+
+~~~ java
+	public class Bag<Item> implements Iterable<Item>
+	Bag()
+	void add(Item x)
+	int size()
+	Interator<Item> iterator()
+~~~
+
+## 2.7 应用 ##
