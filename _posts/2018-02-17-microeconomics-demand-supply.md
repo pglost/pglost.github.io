@@ -72,6 +72,7 @@ $$Q_{xs}=f(P_x,PriceInput,Technology)$$
 
 ### 3.5 技术对供给的影响 ###
 - 技术进步，供给曲线右移
+
 ## 4. 供需平衡 ##
 - 供给过剩（Supply Surplus）
 - 供给短缺（Supply Shortage）
