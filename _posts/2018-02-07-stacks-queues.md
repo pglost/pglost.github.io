@@ -28,7 +28,12 @@ tag:
 ### 2.1 API ###
 
 ~~~ java
-public class StackOfStrings	StackOfStrings()	void push(String item)	String pop()	boolean isEmpty()	int size()
+public class StackOfStrings
+	StackOfStrings()
+	void push(String item)
+	String pop()
+	boolean isEmpty()
+	int size()
 ~~~
 
 ### 2.2 链表实现 ###
@@ -54,7 +59,7 @@ public class linkedStackOfStrings {
 		String item = first.item;
 		first = item.next;
 		return item;
-	}	
+	}
 }
 ~~~
 
@@ -66,10 +71,10 @@ public class linkedStackOfStrings {
 
 | Node | 空间花费 |
 | :----:  | :----: |
-| object overhead | 16 byte| 
-| extra overhead | 8 byte（inner class）| 
-| item | 8 byte（reference to String）| 
-| next | 8 byte（reference to Node）| 
+| object overhead | 16 byte|
+| extra overhead | 8 byte（inner class）|
+| item | 8 byte（reference to String）|
+| next | 8 byte（reference to Node）|
 
 ### 2.3 数组实现 ###
 使用数组去存储栈中的元素。
@@ -81,7 +86,7 @@ public class linkedStackOfStrings {
 	public class FixedCapacityStackOfStrings {
 		private String[] s;
 		private int N = 0;
-		
+
 		public FixedCapacityStackOfStrings(int capacity) {
 			s = new String[capacity];
 		}
@@ -135,32 +140,32 @@ public class linkedStackOfStrings {
 
 ~~~ java
 	public ResizingArrayStackOfString{
-		rivate String[] s;
+		private String[] s;
 		private int N = 0;
-		
+
 		public ResizingArrayStackOfString(){
 			s = new String[1];
 		}
-		
+
 		public void push(String item) {
 			if (N == s.length) resize(2*s.length);
 			s[N++] = item;
 		}
-		
+
 		public String pop() {
 			String item = s[--N];
 			s[N] = null;
 			if (N > 0 && N == s.length/4) resize(s.length/2);
 			return item;
 		}
-		
+
 		private void resize(int capacity) {
 			String[] copy = new String[capacity];
 			for (int i = 0; i < N; i++)
 				copy[i] = s[i];
 			s = copy;
 		}
-		
+
 	}
 ~~~
 
@@ -181,7 +186,12 @@ public class linkedStackOfStrings {
 ## 2.3 队列（Queues）##
 ### 2.3.1 API ###
 ~~~ java
-public class QueueOfStrings	StackOfStrings()	void enqueue(String item)	String dequeue()	boolean isEmpty()	int size()
+public class QueueOfStrings
+	StackOfStrings()
+	void enqueue(String item)
+	String dequeue()
+	boolean isEmpty()
+	int size()
 ~~~
 
 ### 2.3.2 链表实现 ###
@@ -233,12 +243,12 @@ public class QueueOfStrings	StackOfStrings()	void enqueue(String item)	String
 ~~~ java
 	public class Stack<Item> {
 		private Node first = null;
-		
+
 		private Node {
 			Item item;
 			Node next;
 		}
-		
+
 		public boolean isEmpty() {
 			return first == null;
 		}
@@ -266,7 +276,7 @@ Java无法new泛型数组，因此要用到强制类型转换。
 	public class FixedCapacityStack<Item> {
 		private Item[] s;
 		private int N = 0;
-		
+
 		public FixedCapacityStack(int capacity) {
 			s = (Item[])new Object[capacity];
 		}
@@ -276,7 +286,7 @@ Java无法new泛型数组，因此要用到强制类型转换。
 		public void push (Item item) {
 			s[N++] = item;
 		}
-		
+
 		public Item pop() {
 			return s[--N];
 		}
@@ -310,21 +320,21 @@ Java提供了`java.lang.Iterable`接口。
 ~~~ java
 	for(String s:stack)
 		StdOut.println(s);
-~~~ 
+~~~
 
 ### 2.5.3 栈迭代器 ###
 
 #### 2.5.3 链表实现####
 ~~~ java
 	import java.util.Iterator;
-	
+
 	public class Stack<Item> implements Iterable<Item> {
 		...
 		public Iterator<Item> iterator(){return new ListIterator();}
-		
+
 		private class ListIterator implements Iterator<Item> {
 			private Node current = first;
-			
+
 			public boolean hasNext() { return current != null;}
 			public Item next() {
 				Item item = current.item;
@@ -344,12 +354,12 @@ Java提供了`java.lang.Iterable`接口。
 	}
 	private class ReverseArrayIterator implements Iterator<Item> {
 		private int i = N;
-		
+
 		public boolean hasNext(){return i > 0;}
-		
+
 		public Item next { return s[--i]; }
 	}
-	
+
 }
 ~~~
 
