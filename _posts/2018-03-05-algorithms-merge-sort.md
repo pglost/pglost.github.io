@@ -177,7 +177,7 @@ public class MergeBU {
 - 高度为h的二叉树最多有$$2^h$$个叶子节点
 - 数组有N!个排序，代表着决策树最少有N!个叶子节点
 
-$$\geq N!$$叶子节点数量$$\leq 2^h$$
+$$N!\geq $$叶子节点数量$$\leq 2^h$$
 
 $$h \geq lg(N!) $$ ~ NlgN
  
