@@ -97,9 +97,9 @@ private static void merge (Comparable[] a, Comparable[] aux, int lo, int mid, in
 
 当N>1时
 
-C(N) $$/leq$$ C(N/2) + C(N/2) + N
+C(N) $$\leq$$ C(N/2) + C(N/2) + N
 
-A(N) $$/leq$$ A(N/2) + A(N/2) + 6N
+A(N) $$\leq$$ A(N/2) + A(N/2) + 6N
 
 当N=1时
 C(1) = 0, A(1) = 0
@@ -177,9 +177,9 @@ public class MergeBU {
 - 高度为h的二叉树最多有$$2^h$$个叶子节点
 - 数组有N!个排序，代表着决策树最少有N!个叶子节点
 
-$$/geq N!$$叶子节点数量$$/leq 2^h$$
+$$\geq N!$$叶子节点数量$$\leq 2^h$$
 
-$$h /geq lg(N!) $$ ~ NlgN
+$$h \geq lg(N!) $$ ~ NlgN
  
  **排序**
 
