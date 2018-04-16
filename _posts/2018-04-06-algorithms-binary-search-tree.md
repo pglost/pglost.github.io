@@ -454,8 +454,8 @@ private Node delete(Node x, Key key) {
       <td>N</td>
       <td>N</td>      
       <td>N</td>
-      <td>1.39log N(若考虑到删除，也可能变为$$\sqrt{N}$$)</td>
-      <td>1.39log N(若考虑到删除，也可能变为$$\sqrt{N}$$)</td>      
+      <td>1.39log N(若考虑删除，可能变为$$\sqrt{N}$$)</td>
+      <td>1.39log N(若考虑删除，可能变为$$\sqrt{N}$$)</td>   
       <td>$$\sqrt{N}$$</td>
       <td>next</td>
       <td>compareTo()</td>
