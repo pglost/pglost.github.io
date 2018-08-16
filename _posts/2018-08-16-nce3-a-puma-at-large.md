@@ -3,8 +3,7 @@ layout: post
 title:  "新概念英语3 - A puma at large"
 date:   2018-08-16 22:39:54
 tag:
-- Java编程的逻辑
-- 编程基础
+- 新概念英语
 ---
 
 * content
