@@ -59,10 +59,12 @@ tag:
         - He had his wallet stolen. 
         
 > The big clock which used to strike the hours day and night was damaged many years ago and has been silent ever since.
+
 - used to:表示过去常常做, 而现在不再发生的事情
     - He used to smoke everyday.
 
 > One night, however, our vicar woke up with a start: the clock was striking the hours!
+
 - however
     - 用于口语，主要用在句首
     - 作文中，最好用在句中、句尾，要用逗号分隔开来
@@ -80,10 +82,12 @@ tag:
     - Nearly a week past before he could explain what had happened to him.
 
 > Armed with a torch, the vicar went up into the clock tower to see what was going on.
+
 - 现在分词和过去分词的用法
     - 分词做状语/定语的时候，一定要注意它和逻辑主语要呼应一致
 
 > In the torchlight, he caught sight of a figure whom he immediately recognized as Bill Wilkins, our local grocer. 
+
 - recognized sb as 认出某人
     - regard sb as, think of sb as 认为某人是
     - treat sb as 把某人对待为
@@ -97,17 +101,25 @@ tag:
     - week after week
     - bus after bus
 > 'You certainly did give me a surprise!' said the vicar. 
+
 - did
     - 肯定句中常用do，did，dose加强语气和情感色彩，一定要位于动词原形之前
 >'You've probably woken up everyone in the village as well. Still, I'm glad the bell is working again.' 
+
 - as well用在句尾相当于too，常用在肯定句中，但是比too所表达的语义更优秀
 - Still用于句首，用逗号分隔开来，表达一个转折的关系：虽然如此，但是
+
 > That's the trouble, vicar,' answered Bill. 'It's working all right, but I'm afraid that at one o'clock it will strike thirteen times and there's nothing I can do about it.' 
+
 > 'We'll get used to that Bill,' said the vicar.  
+
 - get used to, be used to, be accustomed to, get accustomed to
     - get强调渐进的过程，be强调习惯了的状态
+  
 > 'Thirteen is not as good as one but it's better than nothing. Now let's go downstairs and have a cup of tea.'
+
 ## Summary Writing
+
 1. It woke the vicar up that the church clock was striking the hours.
 2. It was one o'clock.
 3. The clock was stroke 13 times.
@@ -122,6 +134,7 @@ tag:
 At one o'colck, the church clock striking the hours woke up the vicar as it struke thirteen times. The vicar went up into the clock tower, taking a tourchlight with him. He saw Bill Wilkings there and Bill expalined that he was trying to repair the bell but had not succeed because it struke thirteen times at one o'clock. However, the vicar was pleased the bell was working again and ofter the grocer a cup of tea. 
 
 ## Special difficulties
+
 - in prep.
     - 与表达惊奇、恐惧、失望或者生气等感情色彩的名词搭配连用 在句中起状语作用
         - in surprise; in astonishment; in alarm; in embarrassment; in amazement; in despair; in dismay; in anger; in disappointment;
@@ -131,6 +144,7 @@ At one o'colck, the church clock striking the hours woke up the vicar as it stru
         - in trouble; in difficulty; in bed; in a hurry; in debt; in love with sb; in tears; in good order 秩序良好; in good repair 维修状况良好; in good health; in poor health; in the bad mood; in the good mood; in haste 匆匆忙忙; in favor of excitement; in poverty 在贫困之中; in luxury 奢侈地
 
 ## Mutiple chioce questions
+
 - in order 正常/ out of order 不正常
 - 为...表示感谢 be grateful for/ be thankful for   不辞辛劳地做某事 take the trouble to do sth
 - 强调句式：it was not until ... that ... 一直到...才... 
