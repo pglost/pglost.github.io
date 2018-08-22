@@ -57,6 +57,7 @@ tag:
     - 某人所遭受到的意外某种情况-主语必须是发出动作的人
         - His wallet was stolen
         - He had his wallet stolen. 
+        
 > The big clock which used to strike the hours day and night was damaged many years ago and has been silent ever since.
 - used to:表示过去常常做, 而现在不再发生的事情
     - He used to smoke everyday.
