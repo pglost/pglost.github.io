@@ -158,13 +158,16 @@ tag:
 - I still remember the school where I studied English.
 
 > It immediately ran away when she saw it, and experts confirmed that a puma will not attack a human being unless it is cornered. 
+
 - confirm: be sure, be certain
 - unless: if not
 
 > The search proved difficult, for the puma was often observed at one place in the morning and at another place twenty miles away in the evening.
+
 - search = hunt
 
 > Wherever it went, it left behind it a trail of dead deer and small animals like rabbits.
+
 - 把某物留着后面：leave behind
 - Wherever he went, the wounded soldier left behind him a trail of blood.
 
@@ -173,6 +176,7 @@ tag:
 英文的表达方式重点在于突出客观事实，而中文则善于运用动作的执行者。
 
 > Several people complained of 'cat-like noises' at night and a businessman on a fishing trip saw the puma up a tree.
+
 - on + 名词：强调动作正在进行
     - on the rise
     - on the increase
@@ -180,7 +184,9 @@ tag:
     - on the match
     - on the fishing trip
     - on holiday
- >The expert were now fully convinced that the animal was a puma, but where had it come from?
+   
+> The expert were now fully convinced that the animal was a puma, but where had it come from?
+ 
 - fully: completely, entirely
 
 > As no pumas had been reported missing from any zoo in the country, this one must have been in the possession of a private collector and somehow managed to escape. 
@@ -192,10 +198,10 @@ tag:
     - The person in possession of the big house is excited.
 - take possession of 拥有
 
-
 >The hunt went on for several weeks, but the puma was not caught.
 
 >It is disturbing to think that a dangerous wild animal is still at large in the quiet countryside.
+
 - It is disturbing to think that 
     it做形式主义，为了保持句子的平衡，避免头重脚轻。
 
