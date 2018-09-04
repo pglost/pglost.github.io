@@ -1,10 +1,9 @@
 ---
 layout: post
 title:  "Java编程的逻辑-类的继承"
-date:   2018-08-22 22:39:54
+date:   2018-08-28 22:39:54
 tag:
 - Java编程的逻辑
-- 编程基础
 ---
 
 * content
