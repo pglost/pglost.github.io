@@ -82,7 +82,7 @@ tag:
 	
 ### 8.1.2 容器类
 
-~~~
+~~~ java
 public class DynamicArray<E> {
     private static final int DEAFAULT_CAPACITY = 10;
     private int size;
@@ -271,13 +271,13 @@ public void addAll(DynamicArray<? extends E> c) {
 
 	~~~ java
 	public staitc <T> int indexOf(DynamicArray<T> arr, Object ele) {
-	
+		
 	}
 	~~~
 
 - 通配符形式的局限性
 	- 只能读，不能写
-	
+
 		~~~ java
 		DynamicArray<Integer> ints = new DynamicArray<Intgeter>();
 		DynamicArray<? extends Number> numbers = ints;
@@ -285,39 +285,37 @@ public void addAll(DynamicArray<? extends E> c) {
 		numbers.add(a);//错误
 		numbers.add((Number)a);//错误
 		numbers.add((Object)a);//错误
-		~~~
-		
- 		无论是Integer、Number、Object，编译器都会报错。
- 	
-	 	- ?表示安全类型未知。? extends Number表示是Number的某个子类型，但不知道具体子类型，如果允许写入的，Java就无法确保类型的安全，所以干脆禁止。
-	 	-  大部分情况下这种限制是好的，但是使得一些理应的基本操作无法完成，比如交换两个元素的位置
- 	
-	 	~~~ java
-	 	public static void swap(DynamicArray<?> arr, int i, int j) {
-	 		Object tmp = arr.get(i);
-	 		arr.set(i, arr.get(j));
-	 		arr.set(j, tmp);
-	 	}
-	 	~~~
- 	
+		~~~	
+		- 无论是Integer、Number、Object，编译器都会报错。
+ 		- ?表示安全类型未知。? extends Number表示是Number的某个子类型，但不知道具体子类型，如果允许写入的，Java就无法确保类型的安全，所以干脆禁止。
+		-  大部分情况下这种限制是好的，但是使得一些理应的基本操作无法完成，比如**交换两个元素的位置**
 		- 借助带类型参数的泛型方法，这个问题就可以解决
+			- swap可以调用swapInternal，而带类型参数的swapInternal可以写入。
+			- Java容器类中就有类似的方法，公用的API是通配符形式，内部调用带类型参数的方法
+			
+		 	~~~ java
+		 	public static void swap(DynamicArray<?> arr, int i, int j) {
+		 		Object tmp = arr.get(i);
+		 		arr.set(i, arr.get(j));
+		 		arr.set(j, tmp);
+		 	}
+			~~~
+		
+		
+			~~~ java
+			private static <T> void swapInternal(DynamicArray<T> arr, int i, int j) {
+				T temp = arr.get(i);
+				arr.set(i, arr.get(j));
+				arr.set(j, temp);
+			}
+			
+			public static void swap(DynamicArray<?> arr, int i, int j) {
+				swapInternal(arr, i, j);
+			}
+			~~~
 	
-		~~~ java
-		private static <T> void swapInternal(DynamicArray<T> arr, int i, int j) {
-			T temp = arr.get(i);
-			arr.set(i, arr.get(j));
-			arr.set(j, temp);
-		}
-		
-		public static void swap(DynamicArray<?> arr, int i, int j) {
-			swapInternal(arr, i, j);
-		}
-		~~~
-		
-		- swap可以调用swapInternal，而带类型参数的swapInternal可以写入。
-		- Java容器类中就有类似的方法，公用的API是通配符形式，内部调用带类型参数的方法
 
-	- 参数类型之间有依赖关系，也只能用类型参数
+ - 参数类型之间有依赖关系，也只能用类型参数
 	
 		~~~ java
 		public static <D, S extends D> void copy(DynamicArray<D> dest, DynamicArray<S> src) {
@@ -327,7 +325,7 @@ public void addAll(DynamicArray<? extends E> c) {
 		}
 		~~~
 	
-		可以通过通配符，使得两个参数简化为一个,但是无法替代。
+	   可以通过通配符，使得两个参数简化为一个,但是无法替代。
 	
 		~~~ java
 		public static <D> void copy(DynamicArray<D> dest, DynamicArray<? extends D> src) {
