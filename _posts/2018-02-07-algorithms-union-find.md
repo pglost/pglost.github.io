@@ -4,7 +4,6 @@ title:  "Union-Find"
 date:   2018-02-07 17:31:54
 tag:
 - 普林斯顿算法公开课
-- Cousera
 ---
 
 * content

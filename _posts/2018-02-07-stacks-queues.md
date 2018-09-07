@@ -4,13 +4,12 @@ title:  "Stacks and Queues"
 date:   2018-02-09 16:31:54
 tag:
 - 普林斯顿算法公开课
-- Cousera
 ---
 
 * content
 {:toc}
 
-## 1. 概述 ##
+## 1. 概述
 
 基本数据类型
 
@@ -23,9 +22,9 @@ tag:
 
 模块式编程，将接口与实现完全分离
 
-## 2. 栈（Stacks）##
+## 2. 栈（Stacks）
 
-### 2.1 API ###
+### 2.1 API 
 
 ~~~ java
 public class StackOfStrings
@@ -36,7 +35,7 @@ public class StackOfStrings
 	int size()
 ~~~
 
-### 2.2 链表实现 ###
+### 2.2 链表实现
 维护一个指针，指向链表第一个节点。从链表头插入、删除
 
 ~~~ java
@@ -76,7 +75,7 @@ public class linkedStackOfStrings {
 | item | 8 byte（reference to String）|
 | next | 8 byte（reference to Node）|
 
-### 2.3 数组实现 ###
+### 2.3 数组实现
 使用数组去存储栈中的元素。
 
 - push(): 在数组的尾部增加一个元素（S[N]）
@@ -118,7 +117,7 @@ public class linkedStackOfStrings {
 	}
 ~~~
 
-### 2.3 可变长度（resizeing）数组实现 ###
+### 2.3 可变长度（resizeing）数组实现
 
 改变数组长度的开销很大，因为需要重新开辟一片内存，并将原数组的内容拷贝过去。
 
@@ -126,14 +125,13 @@ public class linkedStackOfStrings {
 
 遵循的原则：resizing操作尽可能少
 
-### 2.3.1 入栈 ###
+### 2.3.1 入栈
 
 重复倍增（repeated doubling）：如果数组满容量，创建一个2倍容量的新数组，并将原数组拷贝过去
 
 入栈N个元素的开销：N+(2+4+8+...+N) ~3N
 
-### 2.3.2 出栈 ###
-
+### 2.3.2 出栈
 栈内元素个数达到数组长度的1/4时，将数组长度减半
 
 在可变长度的数组中，元素的数量会一直占据组长度的25%-100%
@@ -169,7 +167,7 @@ public class linkedStackOfStrings {
 	}
 ~~~
 
-### 2.3.3 性能分析 ###
+### 2.3.3 性能分析
 
 均摊分析：在最坏的情况下，每个操作的平均时间复杂度
 
@@ -183,8 +181,8 @@ public class linkedStackOfStrings {
 | size |  1 | 1 | 1|
 
 
-## 2.3 队列（Queues）##
-### 2.3.1 API ###
+## 2.3 队列（Queues）
+### 2.3.1 API
 ~~~ java
 public class QueueOfStrings
 	StackOfStrings()
@@ -194,7 +192,7 @@ public class QueueOfStrings
 	int size()
 ~~~
 
-### 2.3.2 链表实现 ###
+### 2.3.2 链表实现
 
 维护两个指针，分别指向链表头和链表尾，链表头出队，链表尾入队
 
@@ -224,16 +222,16 @@ public class QueueOfStrings
 		}
 	}
 ~~~
-## 2.4 泛型（Generics）##
+## 2.4 泛型（Generics）
 
 我们已经实现了字符串栈，对于其他的数据类型，我们如何扩展
 
-### 2.4.1 尝试1 ###
+### 2.4.1 尝试1
 对于每一种数据类型都实现一种栈，代码会越来越难以维护。
 
-### 2.4.2 尝试2 ###
+### 2.4.2 尝试2
 实现一个通用的对象栈，但是使用这种数据结构需要强制类型转换。
-### 2.4.2 尝试3 泛型 ###
+### 2.4.2 尝试3 泛型
 
 - 客户端不用强制转换
 - 编译的时候就能发现类型不匹配的错误
@@ -293,14 +291,13 @@ Java无法new泛型数组，因此要用到强制类型转换。
 	}
 ~~~
 
-## 2.5 迭代器（Iterators）##
+## 2.5 迭代器（Iterators）
 
-### 2.5.1 迭代 ###
+### 2.5.1 迭代
 不管栈的具体实现形式，提供栈内元素的遍历的通用方法。
 Java提供了`java.lang.Iterable`接口。
 
-### 2.5.2 迭代器 ###
-
+### 2.5.2 迭代器
 - Iterable接口：有返回迭代器的方法
 ~~~ java
 	public interface Iterable<Item> {
@@ -322,9 +319,9 @@ Java提供了`java.lang.Iterable`接口。
 		StdOut.println(s);
 ~~~
 
-### 2.5.3 栈迭代器 ###
+### 2.5.3 栈迭代器
 
-#### 2.5.3 链表实现####
+#### 2.5.3 链表实现
 ~~~ java
 	import java.util.Iterator;
 
@@ -344,7 +341,7 @@ Java提供了`java.lang.Iterable`接口。
 		}
 	}
 ~~~
-#### 2.5.4 数组实现 ####
+#### 2.5.4 数组实现
 ~~~ java
 	import java.util.Iterator;
 	public class Stack<Item> implements Iterable<Item> {
@@ -363,7 +360,7 @@ Java提供了`java.lang.Iterable`接口。
 }
 ~~~
 
-## 2.6 背包（Bag）API##
+## 2.6 背包（Bag）API
 
 添加元素到集合中，并且可以遍历所有的元素。
 
@@ -375,4 +372,4 @@ Java提供了`java.lang.Iterable`接口。
 	Interator<Item> iterator()
 ~~~
 
-## 2.7 应用 ##
+## 2.7 应用
