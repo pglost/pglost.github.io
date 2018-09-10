@@ -4,28 +4,27 @@ title:  "优先级队列"
 date:   2018-03-20 16:31:54
 tag:
 - 普林斯顿算法公开课
-- Cousera
 ---
 
 * content
 {:toc}
 
-## 1. API和初级实现 ##
+## 1. API和初级实现
 
-### 1.1 API ###
+### 1.1 API
 
 ~~~ java
 public class MaxPQ<Key extends Comparable<Key>
 ----------------------------------------------
 	MaxPQ()
-	void			insert(Key v)
-	Key				delMax()
-	boolean		isEmpty()
-	Key				max()
-	int 			size()
+	void	insert(Key v)
+	Key		delMax()
+	boolean	isEmpty()
+	Key		max()
+	int	size()
 ~~~
 
-### 1.2 应用举例 ###
+### 1.2 应用举例
 
 输入N个项，找到最大的M个项。
 
@@ -57,7 +56,7 @@ while(StdIn.hasNextLine()) {
 | 二叉堆  			|N log M	|M			| 
 | 理论最优  		|N			|M			| 
 
-### 1.3 初级实现：无序数组###
+### 1.3 初级实现：无序数组
 
 ~~~ java
 public class UnorderedMaxPQ<Key extends Comparable<Key>> {
@@ -83,7 +82,7 @@ public class UnorderedMaxPQ<Key extends Comparable<Key>> {
  
 ~~~
 
-### 1.4 初级实现的性能分析###
+### 1.4 初级实现的性能分析
 
 目标：所有的操作都是高效的，但是初级实现无法达到此目标
 
@@ -93,9 +92,9 @@ public class UnorderedMaxPQ<Key extends Comparable<Key>> {
 | 有序数组			|N			|1				| 1       |
 | 目标 				|log N		|log N			| log N   |
 
-## 2. 二叉堆 ###
+## 2. 二叉堆
 
-### 2.1 完全二叉树 ###
+### 2.1 完全二叉树
 
 二叉树：每个节点最多有两个子树的树结构。
 
@@ -105,7 +104,7 @@ public class UnorderedMaxPQ<Key extends Comparable<Key>> {
 
 证明：只有当N是2的幂时，高度才会增加。
 
-### 2.2 二叉堆表示方法 ###
+### 2.2 二叉堆表示方法
 
 定义：按照堆序排列的完全二叉树
 
@@ -120,7 +119,7 @@ public class UnorderedMaxPQ<Key extends Comparable<Key>> {
 - 第k个元素的父亲为k/2
 - 第k个元素的孩子为2k，2k+1
 
-### 2.3 上浮 ###
+### 2.3 上浮
 子节点的值比父节点大。
 
 - 交换子节点和父节点的值
@@ -136,7 +135,7 @@ public class UnorderedMaxPQ<Key extends Comparable<Key>> {
 	
 ~~~
 
-### 2.4 插入 ###
+### 2.4 插入
 
 - 插入节点到堆的末尾，然后上浮该节点
 - 最多log N + 1次比较
@@ -149,7 +148,7 @@ public class UnorderedMaxPQ<Key extends Comparable<Key>> {
 	
 ~~~
 
-### 2.5 下沉 ###
+### 2.5 下沉
 
 父节点比子节点小。
 
@@ -168,7 +167,7 @@ private void sink(int k){
 }
 ~~~
 
-### 2.6 删除最大 ###
+### 2.6 删除最大
 
 交换根节点与最后一个节点，然后下沉。
 
@@ -185,7 +184,7 @@ public Key delMax(){
 
 ~~~
 
-### 2.7 Java实现###
+### 2.7 Java实现
 ~~~ java
 public class MaxPQ<Key extends Comparable<Key>> {
 	private Key[] pq;
@@ -215,7 +214,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
 }
 ~~~
 
-### 2.8 优先级队列各种实现的复杂度分析 ###
+### 2.8 优先级队列各种实现的复杂度分析
 
 |  实现				| 插入		|  删除最大 	| 最大     |
 | :----: 			| :----: 	| 	:----: 	| :----:  |
@@ -226,7 +225,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
 | Fibonacci 		|1|log N	| log N (均摊)  |1|
 | impossible 		|1	|1	| 1  |
 
-### 2.9 二叉堆实现的一些细节 ###
+### 2.9 二叉堆实现的一些细节
 
 - 节点的值具有不可变性。
 - 下溢和上溢
@@ -239,7 +238,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
 	- 移除任意项？？？
 	- 改变某一项的优先级值？？？
 
-### 2.10 不可变性的Java实现 ###
+### 2.10 不可变性的Java实现
 
 数据类型：一系列值和操作的集合
 
@@ -274,16 +273,16 @@ public	final class Vector {
 - 对于每一个数据类型的值，必须创建一个新的对象
 
 
-## 3. 堆排 ##
+## 3. 堆排
 
-### 3.1 基本思想 ###
+### 3.1 基本思想
 
 原位排序：
 
 - 对于待排序的长度为N的数组，原位创建一个面向最大值的堆
 - 循环移除最大值
 
-### 3.2 Java实现 ###
+### 3.2 Java实现
 
 - 原地构建
 - 循环移除
@@ -308,7 +307,7 @@ public	final class Vector {
 
 ~~~
 
-### 3.3 复杂度分析 ###
+### 3.3 复杂度分析
 - 复杂度
 	- 堆的构造花费最多2N次比较和交换
 	- 堆排使用最多2NlogN次比较和交换
@@ -334,5 +333,5 @@ public	final class Vector {
 | 堆排  | <i class="fa fa-check"></i>   |   |2NlogN     | 2NlogN |   NLogN     | 可以保证NlogN的复杂度，原位，不使用额外空间|
 | ？？？  		| <i class="fa fa-check"></i>    |  <i class="fa fa-check"></i>  |NlgN    | NlgN|   N     |理想型|
 
-## 4.事件驱动仿真  ##
+## 4.事件驱动仿真
 略
