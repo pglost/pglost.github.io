@@ -4,15 +4,14 @@ title:  "二叉搜索树"
 date:   2018-04-06 23:59:54
 tag:
 - 普林斯顿算法公开课
-- Cousera
 ---
 
 * content
 {:toc}
 
-## 1. 二叉搜索树 ##
+## 1. 二叉搜索树
 
-### 1.1 概述 ###
+### 1.1 概述
 
 定义：对称顺序（symetric order）的二叉树(binary tree)
 
@@ -27,7 +26,7 @@ tag:
 
 - 比右子树的所有键都小
 
-### 1.2 在Java中的定义 ###
+### 1.2 在Java中的定义
 
 Java定义：BTS是对根节点（root Node）的引用
 
@@ -57,7 +56,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 }
 
 ~~~
-### 1.3 BST实现 ###
+### 1.3 BST实现
 
 ~~~ java
 public class BST<Key extends Comparable<Key>, Value> {	private Node root;
@@ -79,7 +78,7 @@ public class BST<Key extends Comparable<Key>, Value> {	private Node root;
 	}
 }
 ~~~
-### 1.4 BTS搜索 ###
+### 1.4 BST搜索
 
 ~~~ java
 public Value get(Key key) {
@@ -95,7 +94,7 @@ public Value get(Key key) {
 ~~~
 
 性能：需要花费树的高度+1次比较
-### 1.5 BTS插入 ###
+### 1.5 BST插入
 ~~~ java
 	public void put(Key key, Value val) {
 		root = put(root, key, val);
@@ -114,7 +113,7 @@ public Value get(Key key) {
 
 性能：需要花费树的高度+1次比较
 
-### 1.6 树的形状 ###
+### 1.6 树的形状
 
 - 树的形状取决于插入节点的顺序。
 
@@ -122,7 +121,7 @@ public Value get(Key key) {
 
 - 为了让树更平衡，应该使用随机顺序插入。
 
-### 1.7 性能 ###
+### 1.7 性能
 
 
 - 如果没有重复的键，BTS的与快排的分割十分相似。
@@ -179,11 +178,11 @@ public Value get(Key key) {
 </table>
 
 
-## 2. 有序的操作 ###
+## 2. 有序的操作
 
-### 2.1 Minimum 和 maximum ###
+### 2.1 Minimum 和 maximum
 
-### 2.2 Floor 和 ceiling ###
+### 2.2 Floor 和 ceiling
 
 - Floor：二叉搜索树小于等于某一键的最大键。
 
@@ -216,7 +215,7 @@ private Node floor(Node x, Key key) {
 	else return x;
 }
 ~~~
-### 2.3 子树节点计数（subtree count） ###
+### 2.3 子树节点计数（subtree count）
 
 ~~~ java
 private class Node {
@@ -251,7 +250,7 @@ private Node put(Node x, Key key, Value val) {
 }
 ~~~
 
-### 2.4 排名（Rank） ###
+### 2.4 排名（Rank）
 
 ~~~ java
 public int rank(Key key) {
@@ -268,7 +267,7 @@ private int rank(Key key, Node x) {
 }
 ~~~
 
-### 2.5 中序遍历（Inorder traversal） ###
+### 2.5 中序遍历（Inorder traversal）
 
 ~~~ java
 public Iterable<Key> keys(){
@@ -340,15 +339,15 @@ private void inorder(Node x, Queue<Key> q) {
    </tr>
 </table>
 
-## 3. 删除 ###
+## 3. 删除
 
-### 3.1 懒惰方法（lazy approach）####
+### 3.1 懒惰方法（lazy approach）
 
 - 找到对应的key，设置value为null
 - 花费：如果键满足随机分布，~logN
 - 不足：内存会过载
 
-### 3.2 删除最小（Deleting the minimun）####
+### 3.2 删除最小（Deleting the minimun）
 
 - 遍历左子树，直到找到有一个左子节点为null的节点
 - 将此节点与其右子节点交换
@@ -366,7 +365,7 @@ private Node deleteMin(Node x) {
 	return x;
 }
 ~~~
-### 3.3 希尔增量删除（Hibbard deletion） ####
+### 3.3 希尔增量删除（Hibbard deletion）
 
 删除包含key的节点：搜索拥有key的节点t
 

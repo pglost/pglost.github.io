@@ -16,12 +16,12 @@ tag:
 ~~~ java
 public class MaxPQ<Key extends Comparable<Key>
 ----------------------------------------------
-	MaxPQ()
-	void	insert(Key v)
-	Key		delMax()
-	boolean	isEmpty()
-	Key		max()
-	int	size()
+MaxPQ()
+void insert(Key v)
+Key delMax()
+boolean isEmpty()
+Key max()
+int size()
 ~~~
 
 ### 1.2 应用举例
